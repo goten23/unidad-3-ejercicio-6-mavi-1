@@ -1,0 +1,29 @@
+import pygame
+import sys
+
+# Inicializar pygame
+pygame.init()
+
+# Configuración de la ventana
+screen_width = 800
+screen_height = 600
+screen = pygame.display.set_mode((screen_width, screen_height))
+pygame.display.set_caption("Crosshair")
+
+# Cargar imagen del crosshair
+crosshair_img = pygame.image.load("crosshair.png")
+crosshair_rect = crosshair_img.get_rect(center=(screen_width // 2, screen_height // 2))
+
+# Bucle principal
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+    # Dibujar el crosshair en el centro de la pantalla
+    screen.fill((0, 0, 0))  # Llenar la pantalla de negro
+    screen.blit(crosshair_img, crosshair_rect)
+    
+    # Actualizar la pantalla
+    pygame.display.flip()
